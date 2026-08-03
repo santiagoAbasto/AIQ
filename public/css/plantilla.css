@@ -1,0 +1,319 @@
+body{
+ font-family: "Plus Jakarta Sans", sans-serif;
+}
+#app{
+   overflow: hidden;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+a {
+    text-decoration: none !important;
+    transition: 500ms;
+}
+.navbar-nav .nav-link {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    /* Técnica para evitar salto al hacer hover con negrita */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* Agregamos la transición para el shadow y el color */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Pseudo-elemento invisible que tiene el ancho de la negrita */
+.navbar-nav .nav-link::after {
+    display: none;
+    content: attr(title);
+    font-weight: 700;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.navbar-nav .nav-link:hover{
+    color: #FB0D1B;
+    /* Usamos text-shadow en lugar de font-weight para permitir la transición */
+    font-weight: 400;
+    text-shadow: 0 0 1px #FB0D1B;
+}
+
+.nav__menu__inicio{
+     color: #fff !important;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    
+}
+.nav__menu__inicio:hover{
+     color: #FB0D1B !important;
+    font-size: 15px;
+    font-style: normal;
+    /* Usamos text-shadow en lugar de font-weight */
+    font-weight: 400;
+    text-shadow: 0 0 1px #FB0D1B;
+    line-height: normal;
+    
+}
+
+.nav__menu{
+    color: #000 !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    
+}
+
+.active__header{
+    color: #FB0D1B !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    
+}
+.active__header:hover{
+    color: #FB0D1B !important;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700 !important;
+    line-height: normal;
+    
+}
+
+.btn-presupuesto {
+    border: 1px solid currentColor;
+    border-radius: 8px;
+    padding: 8px 20px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    color: #FB0D1B;
+    
+}
+
+.btn-presupuesto:hover{
+    background-color: transparent !important;
+    color: #FB0D1B !important;
+    text-shadow: none !important;
+    border-color: #FB0D1B !important;
+    color: #FB0D1B !important;
+}
+
+/* Estilo específico para cuando el menú NO es transparente (nav__menu) */
+.nav__menu.btn-presupuesto {
+    border-color: #FB0D1B;
+    color: #FB0D1B !important;
+}
+
+.nav__menu.btn-presupuesto:hover {
+    background-color: #FB0D1B !important;
+    border-color: #FB0D1B;
+    color: #FB0D1B !important;
+}
+
+.btn-primary {
+    background-color: #B10E18;
+    border-color: #B10E18;
+    border-radius: 8px;
+    border: 1px solid #B10E18;
+    padding: 10px 20px;
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color: #B10E18;
+    border-color: #B10E18;
+    color: #B10E18;
+}
+
+
+
+.btn-tertiary {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #FB0D1B;
+    padding: 10px 20px;
+    color: #FB0D1B;
+}
+
+.btn-tertiary:hover {
+    background-color: #FB0D1B;
+    border-color: #FB0D1B;
+    color: #FFFFFF;
+}
+
+
+
+/* ==============================
+   FOOTER (estilo como la imagen)
+   ============================== */
+
+/* Colores (ajustables) */
+  :root{
+    --footer-bg:#0C58A1;        /* azul fondo (ajustalo si usás otra variable) */
+    --footer-bg-2:#0C58A1;      /* franja inferior */
+    --footer-text:#fff;
+    --footer-accent:#0E63BE;    /* azul iconos */
+  }
+
+  footer.footer{
+    background: var(--footer-bg);
+    color: var(--footer-text);
+  }
+
+  /* Logo */
+  footer.footer .footer-logo{
+    max-width: 170px;
+    height: auto;
+  }
+
+  /* Títulos */
+  footer.footer .footer-title{
+    color: var(--footer-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 120%;
+    margin: 0 0 14px 0;
+  }
+
+  /* Links */
+  footer.footer a,
+  footer.footer a.nav__footer{
+    color:#fff;
+    font-family:"Plus Jakarta Sans", sans-serif;
+    font-size:14px;
+    font-weight:400;
+    line-height:150%;
+    text-decoration:none;
+    display:inline-block;
+    padding: 4px 0;
+  }
+
+  footer.footer a:hover,
+  footer.footer a.nav__footer:hover{
+    color:#fff;
+    text-decoration:none;
+    opacity:.9;
+  }
+
+  /* Columnas de links */
+  footer.footer .footer-links{
+    display:flex;
+    gap: 40px;
+  }
+  footer.footer .footer-links .col{
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* Newsletter */
+  footer.footer .newsletter-form{
+    width:100%;
+    max-width: 260px;
+    position: relative;
+  }
+
+  footer.footer .newsletter-input{
+    width:100%;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.35);
+    color:#fff;
+    height: 38px;
+    border-radius: 6px;
+    padding: 0 42px 0 12px;
+    font-size: 12px;
+    outline: none;
+  }
+
+  footer.footer .newsletter-input::placeholder{
+    color: rgba(255,255,255,.70);
+  }
+
+  footer.footer .newsletter-btn{
+    position:absolute;
+    top:50%;
+    right:10px;
+    transform:translateY(-50%);
+    border:0;
+    background:transparent;
+    color: var(--footer-accent);
+    width: 26px;
+    height: 26px;
+    display:grid;
+    place-items:center;
+    cursor: pointer;
+    padding:0;
+  }
+
+  footer.footer .newsletter-btn i{
+    font-size: 14px;
+  }
+
+  /* Redes */
+  footer.footer .social-row{
+    display:flex;
+    gap: 12px;
+    align-items:center;
+    margin-top: 8px;
+  }
+  footer.footer .social-row a{
+    padding:0;
+    line-height:0;
+    opacity: .95;
+  }
+  footer.footer .social-row a:hover{ opacity: 1; }
+
+  footer.footer .social-row i{
+    color:#fff;
+    font-size: 18px;
+  }
+
+  /* Contacto */
+  footer.footer .contact-info .item{
+    display:flex;
+    gap: 12px;
+    align-items:flex-start;
+    margin-bottom: 12px;
+  }
+
+  footer.footer .contact-info svg{
+    width:18px;
+    height:18px;
+    margin-top: 2px;
+    flex: 0 0 auto;
+  }
+
+  footer.footer .contact-info a{
+    padding:0;
+  }
+
+  /* Espaciados generales para que se parezca a la captura */
+  footer.footer .footer-inner{
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+
+  /* Barra inferior */
+  .footer-bottom{
+    background: var(--footer-bg-2);
+    padding: 14px 0;
+  }
+
+  .footer-bottom p,
+  .footer-bottom a{
+    font-family:"Plus Jakarta Sans", sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,.92);
+    margin:0;
+    text-decoration:none;
+  }
+
+  /* Responsive */
+  @media (max-width: 991.98px){
+    footer.footer .footer-links{ gap: 24px; }
+    footer.footer .newsletter-form{ max-width: 100%; }
+  }
+

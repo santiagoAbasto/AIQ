@@ -1,0 +1,935 @@
+
+/* =====================================================
+   CONTENEDORES PÚBLICOS — 1224px centrado
+   ===================================================== */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1224px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+/* =====================================================
+   CONTENEDOR GLOBAL AIQ — 1224px centrado
+   ===================================================== */
+.aiq-container {
+    max-width: 1224px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media (max-width: 1199.98px) {
+    .aiq-container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .aiq-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+/* Breadcrumb dentro del carousel */
+.carousel-breadcrumb {
+    position: absolute;
+    top: 112px;
+    left: 0;
+    width: 100%;
+    z-index: 3; /* arriba del overlay */
+}
+
+.breadcrumb-hero {
+    background: transparent;
+    padding: 0;
+}
+
+.breadcrumb-hero .breadcrumb-item {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.breadcrumb-hero .breadcrumb-item a {
+    color: #ffffff;
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+.breadcrumb-hero .breadcrumb-item a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+/* Separador > */
+.breadcrumb-hero .breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    color: #ffffff;
+    padding: 0 8px;
+    font-weight: 300;
+    opacity: 0.7;
+}
+
+/* Último item */
+.breadcrumb-hero .breadcrumb-item.active {
+    color: #ffffff;
+    opacity: 0.6;
+    font-weight: 300;
+}
+@media (max-width: 768px) {
+    .carousel-breadcrumb { display: none; }
+}
+
+
+    /* ====== VIDEO / IMAGEN: alto fijo 700px ====== */
+.carousel-video-wrapper {
+  height: 760px;
+  overflow: hidden;
+}
+
+.carousel-video {
+  width: 100%;
+  height: 760px;         /* <- alto fijo */
+  object-fit: cover;     /* <- recorta sin deformar */
+  display: block;
+}
+
+.carousel-imagen {
+  height: 760px;
+  object-fit: cover;
+}
+
+/* Hero/banner: el caption ocupa todo el ancho y alinea el texto con el contenedor público */
+.carousel-caption {
+  right: 0;
+  left: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.carousel-caption > .aiq-container,
+.carousel-caption > .container,
+.carousel-breadcrumb > .aiq-container,
+.carousel-breadcrumb > .container {
+  max-width: 1224px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ====== TEXTOS: responsive ====== */
+.carousel-title {
+ font-family: 'Plus Jakarta Sans';
+    font-weight: 600;
+    font-style: 'SemiBold';
+    font-size: 48px;
+    line-height: 120%;
+    letter-spacing: 0%;
+
+}
+
+.carousel-subtitle {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+  /* Nuevo estilo para el gradiente */
+  .carousel-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #8DB3F4 35.68%, #FFF 100%);
+      mix-blend-mode: multiply;
+    
+      z-index: 1; /* Asegura que esté sobre la img/video */
+  }
+
+  /* Aseguramos que el texto esté por encima del gradiente */
+  .carousel-caption {
+      z-index: 2;
+  }
+/* Tablet */
+@media (max-width: 991.98px) {
+    
+  .carousel-title { font-size: 34px; }
+  .carousel-subtitle { font-size: 16px; }
+}
+
+/* Mobile */
+@media (max-width: 575.98px) {
+  .carousel-video-wrapper,
+  .carousel-video {
+    height: 400px;
+  }
+.carousel-imagen {
+        height: 400px !important;
+    }
+
+  .carousel-title { font-size: 24px; }
+  .carousel-subtitle { font-size: 14px; }
+
+  /* opcional: que no quede tan ancho el texto */
+  .carousel-caption .container { padding-left: 16px; padding-right: 16px; }
+  .carousel-caption .col-md-6 { width: 100%; }
+}
+
+.btn-inicio{
+    background: #FB0D1B;
+    border-radius: 8px;
+    border: 1px solid #FB0D1B;
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding: 12px 24px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+.btn-inicio:hover{
+    /* #FB0D1B más oscuro */
+    background: #e6001a;
+    border: 1px solid #e6001a;
+    color: #fff;
+    text-decoration: none;
+}
+/* inicio */
+/* =========================
+   TÍTULOS Y TEXTO
+========================= */
+.titulo-secciones{
+  color: var(--Grey, #151414);
+font-family: "Plus Jakarta Sans";
+font-size: 32px !important;
+font-style: normal;
+font-weight: 600;
+line-height: 120%; /* 38.4px */
+}
+
+.titulo-inicio{
+    color: #FFFFFF;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 130%;
+   
+}
+
+.descripcion-inicio{
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+/* =========================
+   BOTÓN
+========================= */
+.btn-secondary {
+   border-radius: 8px;
+    border: 1px solid var(--Blanco, #FFF);
+    color: #FFFFFF;
+    padding: 10px 20px;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background-color: #fff;
+    border: 1px solid #16325A;
+    color: #16325A;
+}
+
+/* =========================
+   BLOQUE IMAGEN
+========================= */
+.inicio-imagen{
+    background-size: cover;
+    background-position: center;
+    min-height: 600px;
+    position: relative;
+}
+
+/* Overlay suave */
+.inicio-imagen::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background: rgba(0,0,0,0.15);
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 767px){
+
+    .inicio-imagen{
+        min-height: 280px;
+    }
+
+    .titulo-inicio{
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .descripcion-inicio{
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .btn-secondary{
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 15px;
+    }
+
+    .inicio-texto{
+        padding: 2rem 1.5rem !important;
+        text-align: center;
+    }
+}
+
+
+
+
+/* EMPRESA */
+
+    .contenido-empresa{
+      font-family: 'Plus Jakarta Sans';
+    font-weight: 400;
+    font-style: 'Regular';
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
+
+    }
+.contenido-empresa ul{
+    list-style: none;
+    padding-left: 0;
+    margin-top: 16px;
+}
+
+.contenido-empresa ul li{
+    position: relative;
+    padding-left: 34px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+/* Check SVG */
+.contenido-empresa ul li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%230E63BE' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 12l2 2 4-4'/%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+/* =========================
+   CARD BASE
+========================= */
+.bg__card{
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.card__contenido{
+    padding: 2rem;
+    text-align: center;
+}
+
+.card__titulo{
+    font-family: "Plus Jakarta Sans";
+    font-weight: 600;
+    font-size: 20px;
+    color: #0C58A1;
+    
+}
+
+.card__texto{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 400;
+    font-style: 'Regular';
+    font-size: 16px;
+    color: #000;
+    line-height: 150%;
+    letter-spacing: 0%;
+    text-align: center;
+
+    line-height: 150%;
+}
+
+/* Icono */
+.card__icono{
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 767px){
+
+    .bg__card{
+        height: auto;
+    }
+
+    .card__contenido{
+        padding: 1.75rem 1.5rem;
+        text-align: center;
+    }
+
+    .card__icono{
+        margin: 0 auto;
+        display: block;
+    }
+
+    .card__titulo{
+        font-size: 20px;
+        margin-top: 1.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .card__texto{
+        font-size: 15px;
+    }
+}
+/* Estilo del contenedor de la categoría */
+
+
+.categoria-card {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+/* Imagen de fondo */
+.categoria-card__img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s ease;
+}
+
+/* Overlay oscuro */
+.categoria-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.1)
+    );
+    z-index: 1;
+}
+
+/* Contenido inferior */
+.categoria-card__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+/* Título */
+.categoria-card__title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+
+}
+
+/* Flecha */
+.categoria-card__arrow {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .3s ease;
+}
+
+.categoria-card__arrow svg {
+    stroke: #FFFFFF;
+}
+
+/* Hover */
+.categoria-card:hover .categoria-card__img {
+  transform: scale(1.08);
+}
+
+/* círculo con fondo blanco translúcido */
+.categoria-card:hover .categoria-card__arrow{
+ 
+}
+
+/* svg en azul */
+.categoria-card:hover .categoria-card__arrow svg{
+  stroke: #FB0D1B;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .categoria-card {
+        height: 180px;
+    }
+
+    .categoria-card__title {
+        font-size: 16px;
+    }
+}
+
+  /* === Novedades cards === */
+
+    /* Imagen */
+  .blog-card__img{
+    height: 280px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .card-categoria{
+    color: #0E63BE;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .card-title{
+    font-weight: 700;
+    font-size: 20px;
+    color: #131313;
+
+    line-height: 1.3;
+  }
+
+  .card-text-corto{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    color: #555555;
+    margin-bottom: 20px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-date{
+    color: #999;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .blog-card{
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+
+  .blog-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  }
+
+  /* Flecha SVG */
+  .arrow-icon{
+    color: Grey; /* normal */
+    transition: transform .3s ease, color .3s ease;
+  }
+
+  .blog-card:hover .arrow-icon{
+    transform: translateX(5px);
+    color: #FB0D1B; /* hover azul */
+  }
+
+  /* Contenedor del body para empujar el footer abajo */
+  .card-body-flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.5rem;
+    min-height: 250px;
+  }
+
+
+
+ 
+
+/* productos */
+
+.producto-card{
+    background-color:#fff;
+    border-radius:10px;
+    border:1px solid #E5E7EB;
+    overflow:hidden;
+    transition: box-shadow .3s ease, transform .3s ease;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.producto-card:hover{
+    box-shadow:0 8px 24px rgba(0,0,0,.12);
+    transform:translateY(-3px);
+}
+
+/* Imagen */
+.producto-card__img-wrapper{
+    flex-shrink:0;
+}
+
+.producto-card__img{
+    width:100%;
+    height:280px;
+    object-fit:none; /* antes tenías none */
+    transition:transform .3s ease;
+    display:block;
+}
+
+.producto-card:hover .producto-card__img{
+    transform:scale(1.03);
+}
+
+/* Body */
+.producto-card__body{
+    padding:16px 18px 20px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+/* Categoría */
+.producto-card__categoria{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:#0C58A1;
+    margin-bottom:6px;
+}
+
+/* Título */
+.producto-card__titulo{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:18px;
+    font-weight:700;
+    line-height:1.4;
+    color:#111;
+    margin-bottom:18px;
+}
+
+/* Texto */
+.producto-card__texto{
+    font-size:14px;
+    color:#555;
+    margin-bottom:20px;
+}
+
+/* CTA SIEMPRE ABAJO */
+.producto-card__cta{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-top:auto;
+}
+
+/* bloque izquierda */
+.producto-card__feature{
+    display:flex;
+    align-items:center;
+    min-width:0;
+    flex:1;
+}
+
+.producto-card__caracteristica{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-weight:400;
+    font-size:12px;
+    line-height:150%;
+    letter-spacing:0;
+    color:#111;
+}
+
+.btn-ver-mas{
+    background-color:transparent;
+    border:1px solid #0C58A1;
+    padding:8px 16px;
+    color:#0C58A1;
+    font-weight:700;
+    border-radius:8px;
+    transition:background-color .3s ease, color .3s ease;
+    white-space:nowrap;
+    flex-shrink:0;
+}
+
+.btn-ver-mas:hover{
+    background-color:#0C58A1;
+    color:#fff;
+}
+
+@media (max-width:768px){
+    .producto-card__img{
+        height:200px;
+    }
+
+    .producto-card__titulo{
+        font-size:16px;
+    }
+}
+
+
+/* ítem principal */
+.sidebar-categoria {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--Negro, #1A1F22);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sidebar-categoria:hover,
+.sidebar-categoria.active {
+    color: #FB0D1B;
+    font-weight: 600;
+}
+
+/* contenedor subcategorías */
+.sidebar-subcategorias {
+    display: none;
+    padding-left: 16px;
+}
+
+.sidebar-subcategorias.open {
+    display: block;
+}
+
+/* subcategorías */
+.sidebar-subcategoria {
+    display: block;
+    color: #4b5563;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 0;
+    text-decoration: none;
+    border-bottom: 1px solid #f3f3f3;
+    transition: all 0.2s ease;
+}
+
+.sidebar-subcategoria:hover,
+.sidebar-subcategoria.active {
+    color: #FB0D1B;
+    font-weight: 600;
+}
+
+/* flechita */
+.sidebar-arrow {
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-arrow.rotate {
+    transform: rotate(180deg);
+}
+
+
+
+/* --- Estilos Detalle Producto (Nuevos para coincidir con diseño) --- */
+
+
+
+/* Marco Azul de la Imagen */
+.product-image-frame {
+    border-radius: 8px;
+    border: 1px solid #C4C4C4;
+    padding: 15px;
+    background: #fff;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+/* Info del Producto */
+.product-title {
+    font-family: "Plus Jakarta Sans";
+    font-weight: 700;
+    font-size: 32px;
+    color: #000;
+    margin-bottom: 0px;
+    line-height: 1.2;
+}
+
+.producto-codigo {
+    color: #003375; /* Azul oscuro institucional */
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.desc-label {
+    color: #888;
+     font-family: "Plus Jakarta Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 26px */
+    text-transform: uppercase;
+    display: block;
+}
+
+.product-desc {
+    font-family: "Plus Jakarta Sans";
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.product-desc ul {
+    padding-left: 1.2rem;
+    margin-top: 5px;
+}
+
+/* Botones Personalizados */
+.btn-certificado {
+    border: 1px solid #0E63BE;
+    border-radius: 8px; /* Pill shape */
+    background: transparent;
+    color: #0E63BE;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    font-weight: 500;
+    transition: all 0.3s;
+    font-family: "Plus Jakarta Sans";
+}
+
+.btn-certificado:hover {
+    background: #0E63BE;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-consultar {
+    background: #0E63BE;
+    border: 1px solid #0E63BE;
+    border-radius: 8px; /* Pill shape */
+    color: #fff;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    font-weight: 500;
+    transition: all 0.3s;
+    font-family: "Plus Jakarta Sans";
+}
+
+.btn-consultar:hover {
+    background: #fff;
+    color: #152d55;
+    text-decoration: none;
+}
+
+
+
+
+.fotorama__stage {
+        border: 1px solid #ddd;
+       
+    }
+
+
+    .fotorama__thumb img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+/* Forzar alineación a la izquierda de los thumbnails */
+.fotorama__nav, 
+.fotorama__nav__shaft {
+    text-align: left !important;
+    margin-left: 0 !important;
+}
+
+/* Estilos de thumbnails (aplican en todos los tamaños) */
+.fotorama__thumb {
+    border: 2px solid #c4c2c2;
+    transition: border-color 0.3s ease;
+}
+
+.fotorama__thumb:hover,
+.fotorama__active .fotorama__thumb {
+    border-color: #0E63BE; /* Color del borde al seleccionar */
+}
+
+.fotorama__thumb-border {
+    all: unset !important; /* elimina todos los estilos heredados */
+    border: none !important;
+    width: auto !important;
+    transform: none !important;
+    transition: none !important;
+}

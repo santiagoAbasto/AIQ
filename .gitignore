@@ -1,0 +1,90 @@
+# Environment and credentials
+/.env
+/.env.*
+!/.env.example
+/auth.json
+*.pem
+*.p12
+*.pfx
+*.key
+
+# Dependencies
+/vendor/
+/node_modules/
+
+# Laravel and runtime data
+/bootstrap/cache/*
+!/bootstrap/cache/.gitignore
+/storage/app/*
+!/storage/app/.gitignore
+!/storage/app/public/
+!/storage/app/public/.gitignore
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/logs/*
+/storage/*.key
+/public/storage
+/public/hot
+/public/build/
+
+# Local databases, dumps and backups
+/database/*.sqlite
+*.sqlite-journal
+*.sql
+*.sql.gz
+*.dump
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+* copy.*
+*.blade [0-9].php
+
+# Logs and diagnostic files
+*.log
+error_log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Test and quality-tool caches
+/.phpunit.cache/
+/.phpunit.result.cache
+/.phpunit.cache
+/.php-cs-fixer.cache
+/.pint.cache
+/coverage/
+
+# IDEs and editors
+/.fleet/
+/.idea/
+/.vscode/
+*.swp
+*.swo
+*~
+
+# Operating-system metadata
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# Temporary files and archives
+/.tmp/
+/tmp/
+*.tmp
+*.temp
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+
+# Laravel development environments
+Homestead.json
+Homestead.yaml
+/.sail/
+/.docker-data/
