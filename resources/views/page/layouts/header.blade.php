@@ -209,7 +209,7 @@
                 @if(session('error'))
                     <div class="alert alert-danger py-2">{{ session('error') }}</div>
                 @endif
-                @if(isset($errors) && $errors->any())
+                @if(! $isClienteLoggedIn && isset($errors) && $errors->any())
                     <div class="alert alert-danger py-2">
                         @foreach($errors->all() as $error)
                             <div>{{ $error }}</div>
@@ -740,7 +740,7 @@
         }
 
         // Si hay errores de validación y venimos de register, mostrar form de registro
-        @if(isset($errors) && $errors->any() && old('name'))
+        @if(! $isClienteLoggedIn && isset($errors) && $errors->any() && old('name'))
             var loginClienteModal = document.getElementById('loginClienteModal');
             if (loginClienteModal && loginWrapper && registerWrapper) {
                 loginWrapper.style.display    = 'none';
@@ -748,7 +748,7 @@
                 var modalInstance = bootstrap.Modal.getOrCreateInstance(loginClienteModal);
                 modalInstance.show();
             }
-        @elseif(isset($errors) && $errors->any())
+        @elseif(! $isClienteLoggedIn && isset($errors) && $errors->any())
             var loginClienteModal = document.getElementById('loginClienteModal');
             if (loginClienteModal) {
                 var modalInstance = bootstrap.Modal.getOrCreateInstance(loginClienteModal);

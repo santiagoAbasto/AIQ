@@ -145,6 +145,10 @@
                     @if($activeChat)
                         <input type="hidden" name="chat_id" value="{{ $activeChat->id }}">
                     @endif
+                    <div class="ai-composer-alert" id="aiComposerAlert" role="alert" aria-live="assertive" hidden>
+                        <i class="bi bi-exclamation-circle-fill" aria-hidden="true"></i>
+                        <span>ESCRIBI UNA CONSULTA O ADJUNTA UNA IMAGEN.</span>
+                    </div>
                     <div class="ai-image-preview" id="aiImagePreview" hidden>
                         <img id="aiImagePreviewImg" alt="Vista previa de la imagen seleccionada">
                         <div>
@@ -720,6 +724,30 @@
         padding: 8px;
     }
 
+    .ai-composer-alert {
+        align-items: center;
+        background: #FFF1F2;
+        border: 1px solid #FECDD3;
+        border-radius: 12px;
+        color: #9F1239;
+        display: flex;
+        font-size: 12px;
+        font-weight: 750;
+        gap: 9px;
+        grid-column: 1 / -1;
+        line-height: 1.35;
+        padding: 10px 12px;
+    }
+
+    .ai-composer-alert[hidden] {
+        display: none;
+    }
+
+    .ai-composer-alert i {
+        flex: 0 0 auto;
+        font-size: 15px;
+    }
+
     .ai-image-preview[hidden] {
         display: none;
     }
@@ -951,8 +979,19 @@
         const imagePreviewImg = document.getElementById('aiImagePreviewImg');
         const imagePreviewName = document.getElementById('aiImagePreviewName');
         const imageRemove = document.getElementById('aiImageRemove');
+        const composerAlert = document.getElementById('aiComposerAlert');
         const chatLayout = document.querySelector('.ai-chat-layout');
         let previewObjectUrl = null;
+
+        const hideComposerAlert = function () {
+            if (composerAlert) composerAlert.hidden = true;
+        };
+
+        const showComposerAlert = function () {
+            if (!composerAlert) return;
+            composerAlert.hidden = false;
+            composerAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        };
 
         const fitChatToViewport = function () {
             if (!chatLayout || window.innerWidth <= 860) {
@@ -986,7 +1025,10 @@
                 input.style.height = Math.min(input.scrollHeight, 160) + 'px';
             };
 
-            input.addEventListener('input', resize);
+            input.addEventListener('input', function () {
+                resize();
+                if (input.value.trim()) hideComposerAlert();
+            });
             resize();
 
             @if(!$activeChat)
@@ -1031,6 +1073,7 @@
                 imagePreviewImg.src = previewObjectUrl;
                 imagePreviewName.textContent = file.name;
                 imagePreview.hidden = false;
+                hideComposerAlert();
                 input?.focus();
             });
         }
@@ -1038,16 +1081,24 @@
         imageRemove?.addEventListener('click', clearSelectedImage);
 
         if (composer && messages && input) {
-            composer.addEventListener('submit', function () {
+            composer.addEventListener('submit', function (event) {
                 const text = input.value.trim();
                 const imageFile = imageInput?.files?.[0] || null;
                 const button = composer.querySelector('button[type="submit"]');
 
-                if ((!text && !imageFile) || composer.classList.contains('is-sending')) {
-                    if (!text && !imageFile) input.focus();
+                if (!text && !imageFile) {
+                    event.preventDefault();
+                    showComposerAlert();
+                    input.focus({ preventScroll: true });
                     return;
                 }
 
+                if (composer.classList.contains('is-sending')) {
+                    event.preventDefault();
+                    return;
+                }
+
+                hideComposerAlert();
                 composer.classList.add('is-sending');
 
                 const previousSubmitInput = composer.querySelector('[data-ai-submit-input="true"]');

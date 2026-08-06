@@ -116,13 +116,18 @@ class ClienteDashboardController extends Controller
     public function ask(Request $request, string $type): RedirectResponse
     {
         $meta = $this->assistantMeta($type);
+
+        if (trim((string) $request->input('input')) === '' && ! $request->hasFile('image')) {
+            return back()
+                ->withErrors(['input' => 'ESCRIBI UNA CONSULTA O ADJUNTA UNA IMAGEN.'])
+                ->withInput();
+        }
+
         $data = $request->validate([
-            'input' => ['nullable', 'required_without:image', 'string', 'max:4000'],
-            'image' => ['nullable', 'required_without:input', 'image', 'mimes:jpeg,jpg,png,webp', 'max:6144'],
+            'input' => ['nullable', 'string', 'max:4000'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:6144'],
             'chat_id' => ['nullable', 'integer'],
         ], [
-            'input.required_without' => 'Escribí un comentario o adjuntá una imagen.',
-            'image.required_without' => 'Adjuntá una imagen o escribí una consulta.',
             'image.image' => 'El archivo debe ser una imagen válida.',
             'image.mimes' => 'La imagen debe estar en formato JPG, PNG o WebP.',
             'image.max' => 'La imagen no puede superar los 6 MB.',
