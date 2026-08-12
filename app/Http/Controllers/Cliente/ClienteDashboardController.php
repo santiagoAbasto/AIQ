@@ -175,17 +175,6 @@ class ClienteDashboardController extends Controller
             $output = 'Las fichas técnicas, hojas de seguridad, certificados y documentos internos no se comparten desde el asistente. Puedo responderte una consulta técnica puntual sobre el producto o ayudarte a contactar a un asesor.';
             $status = 'restricted_document';
             $rawResponse = ['policy' => 'restricted_document_delivery'];
-        } elseif ($imageAttachment && ! empty($gemini['api_key'])) {
-            [$output, $status, $rawResponse] = $this->askGeminiDirectly(
-                $type,
-                $meta,
-                $displayInput,
-                $cliente,
-                $chat,
-                $knowledgeDocuments,
-                $gemini,
-                $imageAttachment
-            );
         } elseif (! $webhookUrl) {
             if (empty($gemini['api_key'])) {
                 $status = 'pending_configuration';
@@ -261,7 +250,6 @@ class ClienteDashboardController extends Controller
                     'mime_type' => $imageAttachment['mime'],
                     'file_name' => $imageAttachment['name'],
                     'base64' => base64_encode($imageBytes),
-                    'data_url' => 'data:'.$imageAttachment['mime'].';base64,'.base64_encode($imageBytes),
                     'analysis_mode' => 'industrial_visual_diagnosis',
                 ];
             }
@@ -271,7 +259,7 @@ class ClienteDashboardController extends Controller
             }
 
             try {
-                $http = Http::timeout(45)->acceptJson();
+                $http = Http::connectTimeout(10)->timeout(55)->acceptJson();
                 $n8nApiKey = AiIntegrationSetting::valueFor('n8n_api_key', config('services.n8n.api_key'));
 
                 if ($n8nApiKey) {
@@ -282,15 +270,24 @@ class ClienteDashboardController extends Controller
                 $rawResponse = $response->json();
             } catch (\Throwable $exception) {
                 $status = 'webhook_error';
-                $output = 'No se pudo obtener respuesta del asistente. Revisá el flujo de N8N.';
+                $output = 'El análisis está demorando más de lo habitual. La imagen quedó guardada. Intentá nuevamente en unos segundos.';
                 $rawResponse = ['error' => $exception->getMessage()];
             }
 
             if (isset($response) && $response->failed()) {
                 $status = 'webhook_error';
-                $output = 'No se pudo obtener respuesta del asistente. Revisá el flujo de N8N.';
+                $output = 'El análisis está demorando más de lo habitual. La imagen quedó guardada. Intentá nuevamente en unos segundos.';
             } elseif (isset($response)) {
-                $output = $this->extractOutput($response->json(), $response->body());
+                $responseJson = $response->json();
+                $output = $this->extractOutput($responseJson, $response->body());
+                $responseStatus = is_array($responseJson)
+                    ? (string) ($responseJson['status'] ?? '')
+                    : '';
+
+                if (in_array($responseStatus, ['gemini_error', 'webhook_error', 'temporary_error'], true)) {
+                    $status = $responseStatus;
+                    $output = 'El análisis está demorando más de lo habitual. La imagen quedó guardada. Intentá nuevamente en unos segundos.';
+                }
             }
         }
 
@@ -714,6 +711,7 @@ TEXT),
     {
         return $chat->messages()
             ->whereIn('role', ['user', 'assistant'])
+            ->whereNotIn('status', ['gemini_error', 'webhook_error', 'temporary_error'])
             ->latest()
             ->limit($limit)
             ->get()
