@@ -27,28 +27,28 @@
 
 <img src="docs/readme/divider.svg" alt="" width="100%">
 
-## 📑 Contenido
+## <img src="docs/readme/ic-indice.svg" width="24" height="24" alt=""> Contenido
 
 - [El problema](#-el-problema)
 - [La solución](#-la-solución)
 - [Funcionalidades](#-funcionalidades)
-- [Arquitectura](#️-arquitectura)
+- [Arquitectura](#-arquitectura)
 - [Flujos de trabajo](#-flujos-de-trabajo)
-- [Modelo de datos](#️-modelo-de-datos)
+- [Modelo de datos](#-modelo-de-datos)
 - [Criterios y decisiones](#-criterios-y-decisiones)
 - [Stack](#-stack)
-- [Estructura del repo](#️-estructura-del-repo)
+- [Estructura del repo](#-estructura-del-repo)
 - [Puesta en marcha](#-puesta-en-marcha)
 - [Pruebas y calidad](#-pruebas-y-calidad)
 - [Despliegue](#-despliegue)
 - [Estado y pendientes](#-estado-y-pendientes)
 - [Licencia y autoría](#-licencia-y-autoría)
 
-## 🧩 El problema
+## <img src="docs/readme/ic-problema.svg" width="24" height="24" alt=""> El problema
 
 AIQ trabaja en el rubro plástico: masterbatches, bobinas y termoformados. Sus clientes consultan por procesos, aplicaciones y requisitos técnicos, y esas respuestas dependían de que un asesor estuviera disponible. Al mismo tiempo, el sitio institucional y el catálogo necesitaban actualizarse sin tocar las vistas, y la documentación técnica interna (fichas, hojas de seguridad, certificados) no debía circular sin control.
 
-## 💡 La solución
+## <img src="docs/readme/ic-solucion.svg" width="24" height="24" alt=""> La solución
 
 Un monolito Laravel que reúne el sitio público, un CMS completo y una **zona privada de clientes** con un **asesor técnico** que conserva cada conversación, acepta fotos y responde a partir de la base de conocimiento de AIQ.
 
@@ -59,7 +59,7 @@ Un monolito Laravel que reúne el sitio público, un CMS completo y una **zona p
 | **Personal interno** | Gestiona contenido, catálogo, medios, metadatos, mensajes y suscriptores |
 | **Administrador** | Aprueba clientes y su vigencia, importa contactos, carga PDFs de conocimiento y configura las integraciones de IA |
 
-## ✨ Funcionalidades
+## <img src="docs/readme/ic-funcionalidades.svg" width="24" height="24" alt=""> Funcionalidades
 
 <details open>
 <summary><b>Sitio público</b></summary>
@@ -94,7 +94,7 @@ Un monolito Laravel que reúne el sitio público, un CMS completo y una **zona p
 
 <img src="docs/readme/divider.svg" alt="" width="100%">
 
-## 🏗️ Arquitectura
+## <img src="docs/readme/ic-arquitectura.svg" width="24" height="24" alt=""> Arquitectura
 
 <img src="docs/readme/flujo.svg" alt="El cliente consulta o envía una foto desde la zona privada, Laravel comprueba que la cuenta esté habilitada y vigente, aplica las políticas de adjuntos y documentos internos, pregunta a n8n o a Gemini y guarda la respuesta en el hilo" width="100%">
 
@@ -144,7 +144,7 @@ flowchart TB
 
 La recuperación semántica no vive en Laravel: la aplicación le manda a n8n el tipo de asistente, el filtro de metadatos y el almacén esperado (`supabase_pgvector`). Embeddings, chunks y workflows no están versionados en este repositorio.
 
-## 🔄 Flujos de trabajo
+## <img src="docs/readme/ic-flujos.svg" width="24" height="24" alt=""> Flujos de trabajo
 
 ### Una consulta al asesor
 
@@ -192,7 +192,7 @@ El callback valida el token en tiempo constante, valida el payload y quita clave
 
 <img src="docs/readme/divider.svg" alt="" width="100%">
 
-## 🗃️ Modelo de datos
+## <img src="docs/readme/ic-datos.svg" width="24" height="24" alt=""> Modelo de datos
 
 ```mermaid
 erDiagram
@@ -245,7 +245,7 @@ erDiagram
 
 Las claves foráneas de la zona de clientes borran en cascada; las referencias a usuarios internos usan `nullOnDelete`.
 
-## 🧭 Criterios y decisiones
+## <img src="docs/readme/ic-criterios.svg" width="24" height="24" alt=""> Criterios y decisiones
 
 | Decisión | Por qué |
 |---|---|
@@ -257,7 +257,7 @@ Las claves foráneas de la zona de clientes borran en cascada; las referencias a
 | Documentos internos fuera del asistente | Fichas técnicas, hojas de seguridad y certificados no se reparten por chat |
 | Sin pagos | `mercadopago/dx-php` figura como dependencia, pero no se usa en el código |
 
-## 🧱 Stack
+## <img src="docs/readme/ic-stack.svg" width="24" height="24" alt=""> Stack
 
 | Capa | Tecnología | Versión |
 |---|---|---|
@@ -269,7 +269,7 @@ Las claves foráneas de la zona de clientes borran en cascada; las referencias a
 | IA | Google Gemini (modelo por `GEMINI_MODEL`) · webhooks de n8n | — |
 | Calidad | PHPUnit · Laravel Pint | 11.5.55 · 1.29.0 |
 
-## 🗂️ Estructura del repo
+## <img src="docs/readme/ic-estructura.svg" width="24" height="24" alt=""> Estructura del repo
 
 ```text
 app/
@@ -287,7 +287,7 @@ tests/                     Feature (auth, importación, callback) y Unit
 PRODUCT.md                 usuarios, propósito y principios de diseño
 ```
 
-## 🚀 Puesta en marcha
+## <img src="docs/readme/ic-arranque.svg" width="24" height="24" alt=""> Puesta en marcha
 
 Requisitos: PHP 8.2 o superior, Composer 2, Node.js con npm y MySQL.
 
@@ -309,7 +309,7 @@ php artisan serve          # en otra terminal: npm run dev
 
 Para producción: `npm run build`.
 
-## 🧪 Pruebas y calidad
+## <img src="docs/readme/ic-pruebas.svg" width="24" height="24" alt=""> Pruebas y calidad
 
 ```bash
 php artisan test --compact
@@ -320,20 +320,20 @@ php artisan test --compact
 - La última verificación documentada (PHP 8.5.5, SQLite en memoria) dio 30 pruebas y 89 aserciones en verde y un build de producción correcto; no se volvió a correr para este README.
 - Pint todavía marca diferencias en archivos heredados. No hay análisis estático, cobertura, E2E ni CI.
 
-## 🚢 Despliegue
+## <img src="docs/readme/ic-despliegue.svg" width="24" height="24" alt=""> Despliegue
 
 No documentado en el repositorio: no hay Dockerfile, Compose ni workflows. La aplicación necesita PHP, MySQL, un servidor web con HTTPS y escritura en `storage` y `bootstrap/cache`.
 
 - Los adjuntos y PDFs van al disco `public`: hay que revisar su exposición en cada servidor.
 - `clientes:purge-inactive-data` (con `--dry-run`) elimina cuentas deshabilitadas, chats vencidos y sus adjuntos; no está programado en el scheduler, se corre a mano o con un cron externo.
 
-## 📌 Estado y pendientes
+## <img src="docs/readme/ic-estado.svg" width="24" height="24" alt=""> Estado y pendientes
 
 - **Último commit:** 12 de agosto de 2026 (`fix ia`), rama `main`, 3 commits. Hay cambios sin commitear en autenticación, controladores del panel y pruebas.
 - Funcional y en evolución. Si está en producción **no está verificado** desde el repositorio.
 - Deuda conocida: el middleware `verified` del panel no tiene efecto porque `User` no implementa `MustVerifyEmail`; solo las integraciones exigen el rol `Administrador`; formato con Pint en archivos heredados; la dependencia de Mercado Pago sin uso.
 
-## 📄 Licencia y autoría
+## <img src="docs/readme/ic-licencia.svg" width="24" height="24" alt=""> Licencia y autoría
 
 Software propietario de AIQ. Todos los derechos reservados: no se distribuye ni se publica sin autorización. Datos de clientes, conversaciones, adjuntos, PDFs internos y claves de integración nunca forman parte del repositorio.
 
